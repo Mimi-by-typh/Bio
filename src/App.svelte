@@ -964,25 +964,94 @@
     z-index: 1000;
   }
 
-  /* Background */
+  /* Background - Animated Purple Sunrise */
   .background {
     position: fixed;
     inset: 0;
     overflow: hidden;
     pointer-events: none;
     z-index: 0;
+    background: linear-gradient(
+      135deg,
+      #1a0a2e 0%,
+      #2d1b4e 20%,
+      #4a2c6d 40%,
+      #6b3d8c 60%,
+      #8b5bb5 80%,
+      #b088d4 100%
+    );
+    background-size: 400% 400%;
+    animation: sunriseGradient 15s ease infinite;
+  }
+  
+  @keyframes sunriseGradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  .background::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+      circle at 50% 120%,
+      rgba(255, 182, 193, 0.3) 0%,
+      rgba(186, 85, 211, 0.2) 25%,
+      rgba(138, 43, 226, 0.1) 50%,
+      transparent 70%
+    );
+    animation: sunriseGlow 20s ease-in-out infinite;
+  }
+  
+  @keyframes sunriseGlow {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+      opacity: 0.4;
+    }
+    50% {
+      transform: translate(-10%, -10%) scale(1.1);
+      opacity: 0.7;
+    }
+  }
+  
+  .background::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(circle at 20% 80%, rgba(255, 105, 180, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(138, 43, 226, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(186, 85, 211, 0.1) 0%, transparent 60%);
+    animation: floatingOrbs 25s ease-in-out infinite;
+  }
+  
+  @keyframes floatingOrbs {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scale(1) rotate(0deg);
+    }
+    33% {
+      opacity: 0.5;
+      transform: scale(1.2) rotate(120deg);
+    }
+    66% {
+      opacity: 0.4;
+      transform: scale(0.9) rotate(240deg);
+    }
   }
 
   .bg-video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    transform: translate(-50%, -50%);
-    object-fit: cover;
+    display: none;
   }
 
   /* Window Card - Frosted Glass */
