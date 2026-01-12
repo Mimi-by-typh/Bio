@@ -879,17 +879,6 @@
       </div>
     </div>
   </div>
-  <div class="floating-status" aria-live="polite">
-    <div class="floating-status-title">status</div>
-    <div class="status-chips">
-      {#each statusItems as item}
-        <span class="status-chip" aria-label="{item.label}: {item.value}">
-          <span class="status-chip-label">{item.label}</span>
-          <span class="status-chip-value">{item.value}</span>
-        </span>
-      {/each}
-    </div>
-  </div>
 </main>
 
 <style>
@@ -2102,65 +2091,128 @@
     font-family: 'SF Pro', -apple-system, sans-serif;
   }
 
-  .floating-status {
-    position: fixed;
-    bottom: 140px;
-    left: 32px;
-    z-index: 600;
-    background: rgba(15, 15, 15, 0.92);
-    padding: 12px 16px;
-    border-radius: 12px;
-    border: 0.5px solid rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
-    max-width: 260px;
-    animation: floatIn 0.35s ease;
+  /* Mobile Optimizations */
+  @media (max-width: 768px) {
+    .window-card {
+      width: 95vw;
+      min-height: auto;
+      max-height: 85vh;
+    }
+
+    .content {
+      padding-top: 32px;
+    }
+
+    .avatar-container {
+      width: 100px;
+      height: 100px;
+    }
+
+    .avatar {
+      width: 100px;
+      height: 100px;
+    }
+
+    h1.animated-gradient {
+      font-size: 24px;
+    }
+
+    .subtitle {
+      font-size: 16px;
+    }
+
+    .audio-player {
+      width: calc(100vw - 32px);
+      left: 50%;
+      right: auto;
+      transform: translateX(-50%);
+      bottom: 16px;
+    }
+
+    .keyboard-hint {
+      bottom: 100px;
+      font-size: 11px;
+    }
+
+    .custom-cursor {
+      display: none !important;
+    }
+
+    :global(body) {
+      cursor: auto !important;
+    }
+
+    :global(*) {
+      cursor: auto !important;
+    }
   }
 
-  .floating-status-title {
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    color: rgba(255, 255, 255, 0.55);
+  @media (max-width: 520px) {
+    .window-card {
+      width: 100vw;
+      height: 100vh;
+      max-height: 100vh;
+      border-radius: 0;
+    }
+
+    .title-bar {
+      height: 32px;
+    }
+
+    .content {
+      padding-top: 24px;
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+
+    .links {
+      width: 100%;
+      gap: 12px;
+    }
+
+    .link-btn {
+      width: 100%;
+      height: 48px;
+      justify-content: center;
+    }
+
+    .audio-player {
+      bottom: 12px;
+      width: calc(100vw - 24px);
+    }
+
+    .keyboard-hint {
+      display: none;
+    }
+
+    .notifications {
+      top: 8px;
+      right: 8px;
+      left: 8px;
+    }
+
+    .notification {
+      min-width: auto;
+      max-width: 100%;
+    }
   }
 
-  .status-chips {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-top: 8px;
+  @media (max-width: 375px) {
+    h1.animated-gradient {
+      font-size: 20px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+    }
+
+    .link-btn {
+      height: 44px;
+      font-size: 16px;
+    }
   }
 
-  .status-chip {
-    display: flex;
-    flex-direction: column;
-    padding: 6px 8px;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.02);
-    border: 0.5px solid rgba(255, 255, 255, 0.1);
-    transition: transform 0.2s ease, border-color 0.2s ease;
-  }
-
-  .status-chip-label {
-    font-size: 9px;
-    letter-spacing: 0.15em;
-    color: rgba(255, 255, 255, 0.45);
-  }
-
-  .status-chip-value {
-    font-size: 13px;
-    font-weight: 600;
-    color: #fff;
-  }
-
-  .status-chip:hover {
-    transform: translateY(-1px);
-    border-color: rgba(255, 255, 255, 0.25);
-  }
-
-  @keyframes floatIn {
-    from {
+  @media (prefers-reduced-motion: reduce) {
       opacity: 0;
       transform: translateY(8px);
     }
