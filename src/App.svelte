@@ -860,7 +860,7 @@
         />
       </div>
       
-      <h1 class="animated-gradient">whyheavens</h1>
+      <h1 class="animated-gradient">Scliper</h1>
       <p class="subtitle">
         {typedText}<span class="text-cursor" class:hidden={!showCursor}>|</span>
       </p>
