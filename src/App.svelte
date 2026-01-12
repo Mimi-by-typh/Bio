@@ -2212,30 +2212,6 @@
     }
   }
 
-  @media (prefers-reduced-motion: reduce) {
-      opacity: 0;
-      transform: translateY(8px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @media (max-width: 720px) {
-    .floating-status {
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: 220px;
-      width: min(90vw, 280px);
-      text-align: center;
-    }
-
-    .status-chips {
-      align-items: center;
-    }
-  }
-
   @media (max-width: 640px) {
     .audio-player {
       width: calc(100vw - 32px);
